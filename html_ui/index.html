@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1424">
+<title>Scam Shield | Cyber Falcons</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b1424;--panel:#111e31;--line:#24364d;--muted:#91a4ba;--blue:#48a8ff;--green:#3bd6a0}
+*{box-sizing:border-box}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#e8f0f8}
+h1,h2,h3,.brand{font-family:'Space Grotesk',sans-serif}
+.panel{background:linear-gradient(145deg,#142238,#101b2d);border:1px solid var(--line);border-radius:18px}
+.tab{border:1px solid var(--line);color:#a9bad0;background:#111e31;border-radius:11px;padding:10px 14px;font-size:13px;font-weight:700;transition:.2s}
+.tab.active{background:#17395a;border-color:#328bd2;color:#fff}
+.drop{border:1.5px dashed #3b536e;background:#0e1a2b;border-radius:14px;transition:.2s}
+.drop:hover,.drop.drag{border-color:#48a8ff;background:#122943}
+.btn{background:#2388d1;color:white;border-radius:11px;padding:12px 16px;font-weight:700;transition:.2s}
+.btn:hover{background:#1473b9}.btn:disabled{opacity:.5;cursor:not-allowed}
+.field{width:100%;background:#0b1728;border:1px solid #30445e;color:#e8f0f8;border-radius:10px;padding:12px;outline:none}
+.field:focus{border-color:#48a8ff;box-shadow:0 0 0 3px #48a8ff20}
+.muted{color:var(--muted)}.hidden{display:none!important}
+.pill{border-radius:999px;padding:5px 10px;font-size:11px;font-weight:800;letter-spacing:.05em}
+.safe{color:#5ce0ae;background:#103b32;border:1px solid #1d7259}
+.warn{color:#ffd36b;background:#473719;border:1px solid #8b6825}
+.danger{color:#ff8585;background:#481f2b;border:1px solid #853347}
+.meter{height:9px;background:#26374c;border-radius:20px;overflow:hidden}.meter>div{height:100%;border-radius:20px;transition:width .3s}
+.reason{padding:10px 12px;border:1px solid #263a52;background:#0d1929;border-radius:10px;font-size:13px;color:#c4d2e1}
+.small-label{font-size:11px;color:#91a4ba;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:#30445e;border-radius:8px}
+</style>
+</head>
+<body class="min-h-screen">
+<header class="border-b border-[#24364d] bg-[#0d192a]">
+ <div class="max-w-6xl mx-auto px-4 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+  <div class="flex items-center gap-3">
+   <div class="w-11 h-11 rounded-xl bg-[#17395a] border border-[#28618c] flex items-center justify-center text-[#65bdff] text-xl"><i class="fa-solid fa-shield-halved"></i></div>
+   <div><div class="brand text-2xl font-bold tracking-tight">SCAM<span class="text-[#55b6ff]">SHIELD</span></div><p class="text-xs muted">A Cyber Falcons security project</p></div>
+  </div>
+  <div class="flex items-center gap-2 text-xs muted"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Local analysis ready <span class="mx-1">•</span> Privacy-first scan</div>
+ </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 py-7 space-y-6">
+ <section class="grid lg:grid-cols-[1.5fr_.8fr] gap-5 items-stretch">
+  <div class="panel p-6 sm:p-8">
+   <p class="text-xs font-bold tracking-[.18em] text-[#61baff] uppercase mb-3">Digital safety starts here</p>
+   <h1 class="text-3xl sm:text-4xl font-bold leading-tight">Check before you<br><span class="text-[#55b6ff]">click, scan or pay.</span></h1>
+   <p class="muted mt-4 max-w-xl text-sm leading-6">Analyze suspicious website links, QR codes and SMS messages. Get a risk estimate with clear reasons before taking action.</p>
+   <div class="flex flex-wrap gap-2 mt-6"><span class="pill bg-[#172b42] text-[#9bcfff]">URL CHECK</span><span class="pill bg-[#172b42] text-[#9bcfff]">QR SCAN</span><span class="pill bg-[#172b42] text-[#9bcfff]">SMS ANALYSIS</span><span class="pill bg-[#172b42] text-[#9bcfff]">IMAGE OCR</span></div>
+  </div>
+  <div class="panel p-6 flex flex-col justify-between">
+   <div><p class="small-label">Security reminder</p><div class="text-2xl mt-3 text-[#65bdff]"><i class="fa-solid fa-user-shield"></i></div><h2 class="font-bold text-lg mt-2">Never share your secrets</h2><p class="muted text-sm mt-2 leading-6">Never enter your UPI PIN, OTP, password or card details after opening an unknown link or QR code.</p></div>
+   <p class="text-xs text-[#8fa5bc] mt-5"><i class="fa-solid fa-lock mr-1"></i> Files are processed in your browser in this demo.</p>
+  </div>
+ </section>
+
+ <section class="panel p-5 sm:p-6">
+  <div class="flex items-center justify-between flex-wrap gap-2 mb-4"><div><h2 class="text-xl font-bold">Analyze a threat</h2><p class="muted text-xs mt-1">Choose the content type you want to check.</p></div><span class="pill bg-[#172b42] text-[#9bcfff]">3 INPUT TYPES</span></div>
+  <div class="flex flex-wrap gap-2 mb-5" role="tablist">
+   <button class="tab active" data-tab="url"><i class="fa-solid fa-link mr-2"></i>Website / URL</button>
+   <button class="tab" data-tab="qr"><i class="fa-solid fa-qrcode mr-2"></i>QR Code</button>
+   <button class="tab" data-tab="sms"><i class="fa-regular fa-message mr-2"></i>SMS / WhatsApp</button>
+  </div>
+
+  <div id="tab-url" class="tab-panel space-y-3">
+   <label class="small-label" for="url-text">Paste website link</label>
+   <input id="url-text" class="field" placeholder="https://example.com or www.example.com" autocomplete="off">
+   <div class="text-center muted text-xs">— or upload a text file containing a link —</div>
+   <label class="drop block p-5 text-center cursor-pointer" for="url-file"><i class="fa-solid fa-file-arrow-up text-2xl text-[#61baff]"></i><p class="text-sm font-semibold mt-2">Choose URL file</p><p class="muted text-xs mt-1">TXT file • Maximum 2 MB</p><input id="url-file" type="file" accept=".txt,text/plain" class="hidden"></label>
+   <p id="url-file-name" class="text-xs muted"></p>
+  </div>
+
+  <div id="tab-qr" class="tab-panel hidden space-y-3">
+   <label class="small-label" for="qr-file">Upload QR code image</label>
+   <label class="drop block p-6 text-center cursor-pointer" for="qr-file"><i class="fa-solid fa-qrcode text-3xl text-[#61baff]"></i><p class="text-sm font-semibold mt-2">Choose QR image</p><p class="muted text-xs mt-1">PNG, JPG, JPEG or WEBP • Maximum 8 MB</p><input id="qr-file" type="file" accept="image/png,image/jpeg,image/webp" class="hidden"></label>
+   <div id="qr-preview-wrap" class="hidden text-center"><img id="qr-preview" class="max-h-44 mx-auto rounded-xl border border-[#30445e]" alt="QR image preview"><p id="qr-file-name" class="muted text-xs mt-2"></p></div>
+   <p class="muted text-xs">QR code content is decoded in your browser. The decoded link is analyzed; scanning does not open it.</p>
+  </div>
+
+  <div id="tab-sms" class="tab-panel hidden space-y-3">
+   <label class="small-label" for="sms-text">Paste suspicious SMS / WhatsApp message</label>
+   <textarea id="sms-text" class="field min-h-[125px] resize-y" placeholder="Example: Your bank account will be blocked. Verify KYC now: http://..."></textarea>
+   <div class="text-center muted text-xs">— or upload a message file / screenshot —</div>
+   <label class="drop block p-5 text-center cursor-pointer" for="sms-file"><i class="fa-solid fa-cloud-arrow-up text-2xl text-[#61baff]"></i><p class="text-sm font-semibold mt-2">Upload message or screenshot</p><p class="muted text-xs mt-1">TXT for messages • PNG/JPG/WEBP for screenshots</p><input id="sms-file" type="file" accept=".txt,text/plain,image/png,image/jpeg,image/webp" class="hidden"></label>
+   <p id="sms-file-name" class="text-xs muted"></p>
+   <p class="muted text-xs">Screenshot text is extracted using browser OCR. OCR may make mistakes; review extracted text before trusting the result.</p>
+  </div>
+
+  <div class="flex flex-col sm:flex-row gap-3 mt-5">
+   <button id="analyze-btn" class="btn flex-1"><i class="fa-solid fa-magnifying-glass-chart mr-2"></i>Analyze now</button>
+   <button id="clear-btn" class="px-5 py-3 rounded-xl border border-[#30445e] text-sm font-bold text-[#b5c6d8] hover:bg-[#1a2b40]">Clear</button>
+  </div>
+  <p id="input-status" class="text-xs muted mt-3" aria-live="polite"></p>
+ </section>
+
+ <section id="result-section" class="panel p-5 sm:p-6 hidden">
+  <div class="flex items-start justify-between gap-3 flex-wrap">
+   <div><p class="small-label">Analysis report</p><h2 class="text-xl font-bold mt-1">Scan result</h2></div>
+   <span id="result-status" class="pill warn">SUSPICIOUS</span>
+  </div>
+  <div class="grid md:grid-cols-[.8fr_1.2fr] gap-5 mt-5">
+   <div class="rounded-xl bg-[#0c1929] border border-[#263a52] p-5">
+    <p class="small-label">Risk score</p><div class="flex items-end gap-2 mt-2"><span id="risk-score" class="text-5xl font-bold">0</span><span class="muted text-sm mb-1">/ 100</span></div>
+    <div class="meter mt-4"><div id="risk-meter" style="width:0%"></div></div>
+    <p id="risk-summary" class="muted text-xs mt-3 leading-5"></p>
+   </div>
+   <div class="rounded-xl bg-[#0c1929] border border-[#263a52] p-5">
+    <p class="small-label">Detected category</p><h3 id="category" class="font-bold text-lg mt-2">Website URL</h3>
+    <p class="small-label mt-5">Analyzed content</p><p id="analyzed-content" class="text-sm text-[#c5d4e3] break-all mt-2 font-mono"></p>
+   </div>
+  </div>
+  <div class="mt-5"><h3 class="font-bold text-sm mb-3"><i class="fa-solid fa-list-check text-[#61baff] mr-2"></i>Why this result?</h3><div id="reasons" class="space-y-2"></div></div>
+  <div class="mt-5 p-4 rounded-xl bg-[#132a3e] border border-[#28516d] text-xs text-[#b9d2e5] leading-5"><i class="fa-solid fa-circle-info mr-1 text-[#61baff]"></i> This is an automated risk estimate, not a guarantee. A low score does not prove a link is safe. Do not make payments or share confidential information based only on this result.</div>
+ </section>
+
+ <section class="panel p-5 sm:p-6">
+  <div class="flex items-center justify-between gap-3 flex-wrap mb-4"><div><h2 class="text-xl font-bold">Recent scans</h2><p class="muted text-xs mt-1">Stored only for this browser session.</p></div><button id="clear-history" class="text-xs text-[#9bcfff] hover:underline">Clear history</button></div>
+  <div class="overflow-x-auto"><table class="w-full text-left text-xs min-w-[560px]"><thead class="text-[#91a4ba] border-b border-[#30445e]"><tr><th class="py-3 pr-3">Time</th><th class="py-3 pr-3">Content</th><th class="py-3 pr-3">Type</th><th class="py-3 pr-3">Status</th><th class="py-3">Score</th></tr></thead><tbody id="history-body"><tr><td colspan="5" class="py-5 text-center muted">No scans yet. Your results will appear here.</td></tr></tbody></table></div>
+ </section>
+ <footer class="text-center text-xs muted py-2">Cyber Falcons • CTBF-CS-01 • Real-Time Scam Shield</footer>
+</main>
+
+<script>
+// Connect your backend detector here. Expected JSON response:
+// POST {type:"url"|"qr"|"sms", content:"..."} ->
+// {status:"Safe"|"Suspicious"|"Scam", score:0-100, category:"...", reasons:["..."]}
+// Keep this as a relative URL when frontend and backend share the same server.
+const API_ENDPOINT = "/api/analyze";
+const USE_BACKEND = false; // Change to true after your backend API is ready.
+
+const $ = id => document.getElementById(id);
+let activeTab = "url";
+let qrImageFile = null;
+let smsImageFile = null;
+let historyItems = [];
+
+document.querySelectorAll("[data-tab]").forEach(button => button.addEventListener("click", () => {
+  activeTab = button.dataset.tab;
+  document.querySelectorAll("[data-tab]").forEach(b => b.classList.toggle("active", b === button));
+  document.querySelectorAll(".tab-panel").forEach(p => p.classList.add("hidden"));
+  $("tab-" + activeTab).classList.remove("hidden");
+  $("input-status").textContent = "";
+}));
+
+function setFileName(id, file) { $(id).textContent = file ? "Selected: " + file.name : ""; }
+function validSize(file, maxMB) {
+  if (file.size > maxMB * 1024 * 1024) { showMessage(`File is too large. Maximum size is ${maxMB} MB.`); return false; }
+  return true;
+}
+function showMessage(message) { $("input-status").textContent = message; }
+
+$("url-file").addEventListener("change", e => {
+  const f=e.target.files[0]; if(!f)return;
+  if(!validSize(f,2))return;
+  setFileName("url-file-name",f);
+});
+$("qr-file").addEventListener("change", e => {
+  const f=e.target.files[0]; if(!f)return;
+  if(!validSize(f,8))return;
+  qrImageFile=f; $("qr-preview").src=URL.createObjectURL(f);
+  $("qr-preview-wrap").classList.remove("hidden"); setFileName("qr-file-name",f);
+});
+$("sms-file").addEventListener("change", e => {
+  const f=e.target.files[0]; if(!f)return;
+  if(!validSize(f,8))return;
+  if(f.type.startsWith("image/")) smsImageFile=f; else smsImageFile=null;
+  setFileName("sms-file-name",f);
+});
+
+async function readTextFile(file) {
+  return await file.text();
+}
+async function decodeQR(file) {
+  if(!window.jsQR) throw new Error("QR decoder library could not load. Check your internet connection.");
+  const bitmap=await createImageBitmap(file);
+  const canvas=document.createElement("canvas");
+  const ctx=canvas.getContext("2d",{willReadFrequently:true});
+  const scale=Math.min(1,1400/Math.max(bitmap.width,bitmap.height));
+  canvas.width=Math.round(bitmap.width*scale); canvas.height=Math.round(bitmap.height*scale);
+  ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);
+  const data=ctx.getImageData(0,0,canvas.width,canvas.height);
+  const result=jsQR(data.data,data.width,data.height,{inversionAttempts:"attemptBoth"});
+  bitmap.close();
+  if(!result) throw new Error("QR code could not be read. Try a clearer, well-lit image.");
+  return result.data;
+}
+async function extractOCR(file) {
+  if(!window.Tesseract) throw new Error("OCR library could not load. Check your internet connection.");
+  showMessage("Reading screenshot text… please wait.");
+  const result=await Tesseract.recognize(file,"eng");
+  const text=result.data.text.trim();
+  if(!text) throw new Error("No readable text found in this screenshot.");
+  return text;
+}
+function normalizeURL(raw) {
+  const s=raw.trim();
+  if(/^www\./i.test(s)) return "https://"+s;
+  return s;
+}
+function analyzeLocal(type, raw) {
+  const content=raw.trim(), lower=content.toLowerCase();
+  let score=0, category=type==="qr"?"QR code content":type==="sms"?"SMS / message":"Website URL";
+  const reasons=[];
+  const add=(points,reason)=>{score+=points;reasons.push(reason);};
+
+  const urls=content.match(/(?:https?:\/\/|www\.)[^\s<>"']+/gi)||[];
+  const hasURL=urls.length>0 || /^https?:\/\//i.test(content);
+  const urlCandidate=urls[0] ? normalizeURL(urls[0].replace(/[),.!?]+$/,"")) : (type==="url"?normalizeURL(content):"");
+  let parsed=null;
+  if(urlCandidate){
+    try{parsed=new URL(urlCandidate);}catch(e){add(20,"The supplied URL could not be parsed correctly. Check for a malformed or misleading link.");}
+    if(parsed){
+      if(parsed.protocol==="http:") add(25,"The link uses HTTP, which does not encrypt the connection.");
+      if(parsed.username || parsed.password) add(30,"The URL contains embedded username or password information, which can be used to disguise the real destination.");
+      const host=parsed.hostname.toLowerCase();
+      if(/^\d{1,3}(\.\d{1,3}){3}$/.test(host)) add(30,"The website uses a raw IP address instead of a normal domain name.");
+      if(host.includes("xn--")) add(25,"The domain uses punycode, which can sometimes disguise look-alike characters.");
+      if(host.split(".").length>5) add(10,"The domain has an unusually deep subdomain structure.");
+      const brandLookalikes=["paypaI","g00gle","amaz0n","faceb00k","phonpe","paytm-kyc"];
+      if(brandLookalikes.some(x=>host.includes(x.toLowerCase()))) add(35,"The domain contains a spelling pattern resembling a known brand.");
+    }
+  }
+  const urgentTerms=["urgent","immediately","within 24 hours","account blocked","account suspended","will be blocked","last warning","act now","final notice"];
+  if(urgentTerms.some(x=>lower.includes(x))) add(18,"The message uses urgency or threat language to pressure the recipient.");
+  const credentialTerms=["verify your kyc","update kyc","verify account","password","login now","confirm your account","unlock account","otp","one time password","cvv","upi pin","mpin"];
+  if(credentialTerms.some(x=>lower.includes(x))) add(25,"The content asks for account verification or mentions sensitive credentials such as OTP, PIN or password. Never share these.");
+  const rewardTerms=["won a prize","claim your reward","free gift","cashback","lottery","you have won","prize money"];
+  if(rewardTerms.some(x=>lower.includes(x))) add(20,"Unexpected prize, reward or cashback language can be used in scam messages.");
+  const paymentTerms=["send money","pay now","collect request","approve payment","receive money","refund fee"];
+  if(paymentTerms.some(x=>lower.includes(x))) add(20,"The content contains payment or money-transfer language. Verify the request independently.");
+  if(/upi:\/\/pay/i.test(content)){
+    category="UPI payment QR / link";
+    add(15,"This is a UPI payment request. It may open a payment app; verify the receiver name and amount before approving.");
+    if(/[?&](am|amount)=\d/i.test(content)) add(10,"A payment amount appears to be pre-filled. Check it carefully before authorizing.");
+  } else if(/^wifi:/i.test(content)){category="Wi-Fi connection QR";add(10,"This QR contains Wi-Fi connection details. Connect only to a network you trust.");}
+  else if(/^begin:vcard|^mecard:/i.test(content)){category="Contact card";reasons.push("The QR contains contact information. Review the details before saving.");}
+  else if(hasURL || parsed){if(type!=="url")category=type==="qr"?"QR containing a website link":"Message containing a website link";reasons.push("A web link was found. The destination has not been opened or independently reputation-checked.");}
+  else if(/^smsto:|^tel:/i.test(content)){category="Phone / SMS action";add(10,"This QR can initiate a call or prepare a text message. Check the number and message first.");}
+  else if(/^https?:\/\//i.test(content)){category="Website URL";}
+
+  if(!reasons.length) reasons.push("No common warning pattern was detected by the basic local rules. This does not prove the content is safe.");
+  score=Math.max(0,Math.min(100,score));
+  // A clean HTTPS URL is not declared fully safe; keep a modest baseline uncertainty.
+  if(parsed && score===0) reasons.push("No obvious rule-based warning was found. Website reputation and page behaviour were not verified.");
+  const status=score>=60?"Scam":score>=25?"Suspicious":"Safe";
+  return {status,score,category,reasons};
+}
+async function analyzeWithBackend(type,content){
+  const response=await fetch(API_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({type,content})});
+  if(!response.ok) throw new Error("Backend analysis failed ("+response.status+").");
+  const data=await response.json();
+  if(!Number.isFinite(Number(data.score)) || !Array.isArray(data.reasons)) throw new Error("Backend returned an unexpected response format.");
+  return {status:data.status||"Suspicious",score:Math.max(0,Math.min(100,Number(data.score))),category:data.category||"Content analysis",reasons:data.reasons};
+}
+function renderResult(content,result){
+  $("result-section").classList.remove("hidden");
+  $("result-status").textContent=result.status.toUpperCase();
+  $("result-status").className="pill "+(result.status==="Safe"?"safe":result.status==="Scam"?"danger":"warn");
+  $("risk-score").textContent=result.score;
+  $("risk-meter").style.width=result.score+"%";
+  $("risk-meter").style.background=result.score>=60?"#ff727c":result.score>=25?"#f3c45f":"#3bd6a0";
+  $("risk-summary").textContent=result.status==="Scam"?"High-risk patterns found. Do not open the link, pay or share information.":result.status==="Suspicious"?"Some warning signs were found. Verify through an official channel before proceeding.":"No major warning pattern was detected by this scan. Still verify the sender and destination.";
+  $("category").textContent=result.category;
+  $("analyzed-content").textContent=content.length>650?content.slice(0,650)+"…":content;
+  const list=$("reasons");list.replaceChildren();
+  result.reasons.forEach(reason=>{const div=document.createElement("div");div.className="reason";div.textContent="• "+String(reason);list.appendChild(div);});
+  $("result-section").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function addHistory(content,type,result){
+  historyItems.unshift({time:new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}),content:content.slice(0,70),type,status:result.status,score:result.score});
+  historyItems=historyItems.slice(0,8);renderHistory();
+}
+function renderHistory(){
+  const body=$("history-body");body.replaceChildren();
+  if(!historyItems.length){const tr=document.createElement("tr"),td=document.createElement("td");td.colSpan=5;td.className="py-5 text-center muted";td.textContent="No scans yet. Your results will appear here.";tr.appendChild(td);body.appendChild(tr);return;}
+  historyItems.forEach(item=>{
+    const tr=document.createElement("tr");tr.className="border-b border-[#24364d]";
+    [item.time,item.content,item.type,item.status,item.score+"/100"].forEach((value,index)=>{
+      const td=document.createElement("td");td.className="py-3 pr-3 "+(index===4?"font-bold":"");
+      td.textContent=value;if(index===3){const span=document.createElement("span");span.className="pill "+(item.status==="Safe"?"safe":item.status==="Scam"?"danger":"warn");span.textContent=item.status;td.textContent="";td.appendChild(span);}
+      tr.appendChild(td);
+    });body.appendChild(tr);
+  });
+}
+async function getInput(){
+  if(activeTab==="url"){
+    const file=$("url-file").files[0];
+    const text=$("url-text").value.trim() || (file?await readTextFile(file):"");
+    if(!text)throw new Error("Paste a website link or upload a TXT file first.");
+    return {type:"url",content:text};
+  }
+  if(activeTab==="qr"){
+    if(!qrImageFile)throw new Error("Please upload a QR code image first.");
+    return {type:"qr",content:await decodeQR(qrImageFile)};
+  }
+  const file=$("sms-file").files[0];
+  let content=$("sms-text").value.trim();
+  if(!content && file){
+    content=file.type.startsWith("image/")?await extractOCR(file):await readTextFile(file);
+  }
+  if(!content)throw new Error("Paste a message or upload a TXT file / screenshot first.");
+  return {type:"sms",content};
+}
+$("analyze-btn").addEventListener("click",async()=>{
+  const button=$("analyze-btn");button.disabled=true;button.innerHTML='<i class="fa-solid fa-spinner fa-spin mr-2"></i>Analyzing…';
+  try{
+    const input=await getInput();showMessage("Checking content…");
+    let result;
+    if(USE_BACKEND){
+      try{result=await analyzeWithBackend(input.type,input.content);}
+      catch(error){console.error(error);throw new Error("Server detector could not be reached. Check your backend connection. "+error.message);}
+    }else result=analyzeLocal(input.type,input.content);
+    renderResult(input.content,result);addHistory(input.content,input.type.toUpperCase(),result);showMessage("Analysis completed.");
+  }catch(error){showMessage(error.message||"Something went wrong.");}
+  finally{button.disabled=false;button.innerHTML='<i class="fa-solid fa-magnifying-glass-chart mr-2"></i>Analyze now';}
+});
+$("clear-btn").addEventListener("click",()=>{
+  ["url-text","sms-text","url-file","qr-file","sms-file"].forEach(id=>$(id).value="");
+  ["url-file-name","sms-file-name","qr-file-name"].forEach(id=>$(id).textContent="");
+  $("qr-preview-wrap").classList.add("hidden");$("qr-preview").removeAttribute("src");
+  qrImageFile=null;smsImageFile=null;$("result-section").classList.add("hidden");showMessage("Inputs cleared.");
+});
+$("clear-history").addEventListener("click",()=>{historyItems=[];renderHistory();});
+</script>
+</body>
+</html>
