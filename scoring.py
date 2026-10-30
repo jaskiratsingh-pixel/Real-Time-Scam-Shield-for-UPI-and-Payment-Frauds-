@@ -38,10 +38,12 @@ def combine(message_result, url_results=None, ml_prob=None):
 
     score = max(0, min(100, round(score)))
 
-    # Overrides: these are always Scam
+        # Overrides: these are always Scam
     asks_secret = "ASKS_SECRET" in reasons
     has_link = "HAS_LINK" in reasons
-    if (asks_secret and has_link) or "COLLECT_TRICK" in reasons or "SCAN_TO_RECEIVE" in reasons:
+    prize_and_call = "PRIZE_BAIT" in reasons and "CALL_NUMBER" in reasons
+    if ((asks_secret and has_link) or "COLLECT_TRICK" in reasons
+            or "SCAN_TO_RECEIVE" in reasons or prize_and_call):
         score = max(score, 60)
 
     return {

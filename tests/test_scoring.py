@@ -17,3 +17,8 @@ def test_otp_and_link_is_scam():
 def test_genuine_otp_is_safe():
     msg = check_message("Your OTP is 482910. Do not share this with anyone.")
     assert combine(msg)["verdict"] == "safe"
+    
+    
+def test_prize_plus_call_is_scam():
+    msg = check_message("Congratulations you won a lucky draw of Rs 25 lakh. Call customer care 98XXXXXX10 to claim")
+    assert combine(msg)["verdict"] == "scam"
