@@ -6,4 +6,4 @@ pillow
 tldextract
 python-whois
 requests
-joblib
+joblib 
