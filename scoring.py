@@ -91,11 +91,31 @@ def combine(msg, urls=None, text=None):
 
 
 def combine_qr(qr):
-    """Combine QR analysis into a final result."""
+    import re
 
     score = qr.get("score", 0)
     reasons = list(qr.get("reasons", []))
+    details = dict(qr.get("details") or {})
 
+    text = details.get("decoded_text", "").lower()
+
+    # SCAM: urgent demand for money
+    urgent_payment = (
+        any(word in text for word in ["send", "pay", "transfer"])
+        and any(word in text for word in ["urgent", "immediately", "now"])
+        and any(word in text for word in ["payment", "money", "rs ", "rupees"])
+    )
+
+    if urgent_payment:
+        score = max(score, 70)
+        reasons.append("URGENT_PAYMENT_DEMAND")
+
+    # SUSPICIOUS: pending payment requiring verification
+    elif "payment pending" in text:
+        score = max(score, 35)
+        reasons.append("PENDING_PAYMENT_VERIFY")
+
+    # Existing QR rules
     if "PAY_REQUEST" in reasons:
         score = max(score, 30)
 
@@ -107,6 +127,6 @@ def combine_qr(qr):
     return {
         "score": score,
         "reasons": list(dict.fromkeys(reasons)),
-        "details": qr.get("details", {}),
-        "verdict": verdict_from_score(score),
+        "details": details,
+        "verdict": verdict_from_score(score)
     }
