@@ -1,7 +1,15 @@
+import os
+from urllib.parse import urlparse, parse_qs
+
 import pandas as pd
 from sklearn.metrics import (accuracy_score, confusion_matrix,
                              classification_report)
+from checkers.qr import decode_qr
 
+# ---- Change these to match the values in your CSV "label" column ----
+SCAM = "scam"
+SAFE = "safe"
+# ---------------------------------------------------------------------
 
 df = pd.read_csv("data/labelled_items.csv")
 df["decoded"] = df["image_file"].apply(lambda f: decode_qr(f"test_qr/{f}"))
@@ -12,27 +20,38 @@ print(f"Decode accuracy: {df['exact'].mean():.3f} "
       f"({df['exact'].sum()}/{len(df)})")
 
 # 2) Scam classification from the DECODED text
-SCAM = "scam"          # <- change to match your label value
+BAD_WORDS = ["urgent", "refund", "lottery", "kyc", "reward", "verify", "prize"]
+
 
 def predict(text):
     """Placeholder rules. Swap in your real classifier if you have one."""
-    if not text:
+    if not isinstance(text, str) or not text.strip():
         return "undecoded"
     t = text.lower()
-    bad = ["urgent", "refund", "lottery", "kyc", "reward", "verify", "prize"]
-    if any(w in t for w in bad) or "am=" in t and "pa=" not in t:
+    if any(w in t for w in BAD_WORDS):
         return SCAM
-    return [l for l in df["label"].unique() if l != SCAM][0]
+    # UPI link that has an amount (am) but no payee address (pa)
+    if t.startswith("upi://"):
+        params = parse_qs(urlparse(t).query)
+        if "am" in params and "pa" not in params:
+            return SCAM
+    return SAFE
+
 
 df["pred"] = df["decoded"].apply(predict)
+
+# Report undecoded rows separately, evaluate the rest
+undecoded = (df["pred"] == "undecoded").sum()
+print(f"\nUndecoded QR codes: {undecoded}/{len(df)}")
+
+scored = df[df["pred"] != "undecoded"]
 labels = sorted(df["label"].unique())
-print("\nAccuracy:", round(accuracy_score(df["label"], df["pred"]), 3))
+
+print("\nAccuracy:", round(accuracy_score(scored["label"], scored["pred"]), 3))
 print("\nConfusion matrix (rows=true, cols=pred), labels:", labels)
-print(confusion_matrix(df["label"], df["pred"], labels=labels))
-print("\n", classification_report(df["label"], df["pred"], labels=labels,
-                                  zero_division=0))
+print(confusion_matrix(scored["label"], scored["pred"], labels=labels))
+print("\n", classification_report(scored["label"], scored["pred"],
+                                  labels=labels, zero_division=0))
+
+os.makedirs("data", exist_ok=True)
 df.to_csv("data/results.csv", index=False)
-from qr import decode_qrfrom checkers.qr import decode_qr
-got = df["image_file"].apply(lambda f: decode_qr(f"test_qr/{f}"))
-ok = (got == df["qr_text"])
-print(f"\nQR decode accuracy: {ok.mean():.3f} ({ok.sum()}/{len(df)})")
