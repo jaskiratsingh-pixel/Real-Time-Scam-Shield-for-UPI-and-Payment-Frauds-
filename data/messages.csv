@@ -1,0 +1,16 @@
+text,label
+"Your bank account will be blocked today. Share your OTP immediately.",scam
+"Congratulations! You won a cash prize. Click this link to claim it.",scam
+"Your KYC has expired. Send your PAN and bank details immediately.",scam
+"Scan this QR code to receive your cashback.",scam
+"Your UPI account is suspended. Install this APK to restore access.",scam
+"Your account has been debited. If this wasn't you, contact your bank using its official number.",safe
+"Never share your OTP, PIN or CVV with anyone.",safe
+"Your payment of Rs 500 was successful.",safe
+"Your electricity bill payment is due tomorrow.",safe
+"Your bank statement is now available.",safe
+"Your payment is pending. Please check your banking app.",suspicious
+"You have received a payment request on UPI. Review it before approving.",suspicious
+"Your KYC needs updating. Please verify through your bank's official app.",suspicious
+"An unusual login was detected. Check your account activity.",suspicious
+"Your parcel delivery is delayed. Check the tracking status.",suspicious
