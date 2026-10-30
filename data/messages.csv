@@ -1,4 +1,5 @@
 text,label
+<<<<<<< HEAD
 "Your bank account will be blocked today. Share your OTP immediately.",scam
 "Congratulations! You won a cash prize. Click this link to claim it.",scam
 "Your KYC has expired. Send your PAN and bank details immediately.",scam
@@ -14,3 +15,29 @@ text,label
 "Your KYC needs updating. Please verify through your bank's official app.",suspicious
 "An unusual login was detected. Check your account activity.",suspicious
 "Your parcel delivery is delayed. Check the tracking status.",suspicious
+=======
+"Your bank account is blocked. Share your OTP immediately.",scam
+"Congratulations! You won a cash prize. Click here to claim it.",scam
+"Scan this QR code to receive cashback.",scam
+"Your KYC has expired. Send your banking details immediately.",scam
+"Install this APK to receive your refund.",scam
+"Your UPI account will be suspended. Verify your PIN now.",scam
+"Pay a small fee to unlock your lottery prize.",scam
+"Call this number immediately to prevent account closure.",scam
+"Your electricity connection will be disconnected. Pay through this link.",scam
+"Send your card CVV to receive your reward.",scam
+"Never share your OTP, PIN or CVV with anyone.",safe
+"Your payment of Rs 500 was successful.",safe
+"Your bank statement is now available.",safe
+"Your electricity bill payment is due tomorrow.",safe
+"Your salary has been credited to your account.",safe
+"Your debit card transaction was successful.",safe
+"Your bank account balance has been updated.",safe
+"Thank you for using our banking service.",safe
+"Your monthly account statement is ready.",safe
+"Your scheduled payment has been completed.",safe
+"Your payment is pending. Check your banking app.",suspicious
+"An unusual login was detected. Check your account activity.",suspicious
+"Your KYC needs updating. Verify through your bank's official app.",suspicious
+"You have received a UPI payment request. Review it before approving.",suspicious
+>>>>>>> e7e81f4 (test_scoring.py)

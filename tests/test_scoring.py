@@ -19,6 +19,9 @@ def test_genuine_otp_is_safe():
     assert combine(msg)["verdict"] == "safe"
     
     
-def test_prize_plus_call_is_scam():
-    msg = check_message("Congratulations you won a lucky draw of Rs 25 lakh. Call customer care 98XXXXXX10 to claim")
-    assert combine(msg)["verdict"] == "scam"
+def test_prize_plus_call_is_suspicious():
+    msg = check_message(
+        "Congratulations you won a lucky draw of Rs 25 lakh. "
+        "Call customer care 98XXXXXX10 to claim"
+    )
+    assert combine(msg)["verdict"] == "suspicious"

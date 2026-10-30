@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import pandas as pd
 
-from qr import decode_qr
+from checkers.qr import decode_qr
 
 CSV_PATH = "data/labelled_items.csv"
 
