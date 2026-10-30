@@ -94,3 +94,34 @@ def check_message(text):
     score = max(0, min(100, score))             # clamp 0..100
     return {"score": score, "reasons": reasons,
             "details": {"links": links, "genuine": genuine}}
+    # Generated with Claude, reviewed and modified by the team
+import re
+import unicodedata
+
+def _normalise(text):
+    """Make any input safe to scan: str, NFC form, lowercase."""
+    if not isinstance(text, str):
+        return ""
+    return unicodedata.normalize("NFC", text).casefold()
+
+def _has_any(text, latin_words, native_words):
+    """Latin words need word boundaries; Hindi/Gurmukhi use substring match."""
+    for w in latin_words:
+        if re.search(r"\b" + re.escape(w) + r"\b", text):
+            return True
+    return any(w in text for w in native_words)
+URGENCY_LATIN = [
+    # existing words stay, add:
+    "khata band", "band ho jayega", "block ho jayega", "account band",
+    "nahi ta", "nahi te", "warna", "varna", "turant", "abhi", "aaj hi", "jaldi",
+]
+URGENCY_NATIVE = [
+    "खाता बंद", "ब्लॉक", "तुरंत", "अभी", "आज ही", "जल्दी",
+    "ਖਾਤਾ ਬੰਦ", "ਹੁਣੇ", "ਜਲਦੀ", "ਨਹੀਂ ਤਾਂ",
+]
+
+SECRET_LATIN = ["otp batao", "otp dasso", "pin daalo", "pin dasso", "otp bhejo"]
+SECRET_NATIVE = ["ओटीपी", "पिन", "ਓਟੀਪੀ", "ਪਿਨ"]
+
+PRIZE_LATIN = ["inaam", "jeet gaye", "muft", "lucky draw"]
+PRIZE_NATIVE = ["इनाम", "लॉटरी", "जीत", "ਇਨਾਮ", "ਲਾਟਰੀ"]
