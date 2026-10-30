@@ -1,43 +1,155 @@
-text,label
-<<<<<<< HEAD
-"Your bank account will be blocked today. Share your OTP immediately.",scam
-"Congratulations! You won a cash prize. Click this link to claim it.",scam
-"Your KYC has expired. Send your PAN and bank details immediately.",scam
-"Scan this QR code to receive your cashback.",scam
-"Your UPI account is suspended. Install this APK to restore access.",scam
+# Generated with Claude, reviewed and modified by the team
+Your bank account will be blocked today. Share your OTP now to keep it active.,scam
+You have won a cash prize. Pay a small processing fee to claim it immediately.,scam
+Scan this QR code to receive your refund. Enter your UPI PIN after scanning.,scam
+KYC expired. Install the attached APK to update your bank details immediately.,scam
+Your electricity connection will be disconnected tonight. Pay through this link now.,scam
+A parcel is held at customs. Pay the release charge using this payment link.,scam
+Your UPI payment failed. Call this number and tell the agent your OTP.,scam
+"Congratulations, you are selected for a government grant. Pay the registration fee.",scam
+"Your debit card is suspended. Send your card number, CVV and OTP to reactivate it.",scam
+"To receive the money, approve this collect request in your UPI app.",scam
+Bank security alert: install this screen-sharing app so we can fix your account.,scam
+Your account has unusual activity. Verify your password at this link within 10 minutes.,scam
+You won a smartphone. Click here and pay delivery charges to receive your gift.,scam
+Refund pending. Scan the QR and enter your PIN to get the money back.,scam
+Your FASTag is blocked. Download this APK and complete payment to avoid a fine.,scam
+I am sending you money. Open your UPI app and approve the collect request.,scam
+Your SIM will be deactivated. Share the OTP sent to your phone for verification.,scam
+Urgent: your bank account will close. Send your PIN to this customer-care number.,scam
+You have received a tax refund. Pay verification charges to release it.,scam
+Your online order is cancelled. Share the OTP to process your refund.,scam
+KYC update required immediately. Use this unofficial link and enter your banking password.,scam
+"Scan to receive ₹5,000 cashback. Enter your UPI PIN to confirm the reward.",scam
+Your wallet is frozen. Install this remote support app and share the access code.,scam
+Police complaint registered against your account. Pay the fine through this link now.,scam
+Your salary credit is on hold. Send your OTP to the payroll verification agent.,scam
+You have won a lottery. Transfer the tax amount first to unlock your winnings.,scam
+Payment reversal needs approval. Accept this collect request to get your money back.,scam
+Your bank card expires today. Reply with CVV and OTP for renewal.,scam
+Electricity bill overdue. Pay now at this shortened link or supply will stop.,scam
+Your UPI ID has been selected for a bonus. Share your PIN to activate it.,scam
+Delivery failed. Install this APK to reschedule your parcel and pay a fee.,scam
+"A refund of ₹8,500 is ready. Call this number and reveal the OTP to claim it.",scam
+Your account is under verification. Share your internet banking password now.,scam
+Scan this code to collect your payment. Do not close the app until PIN is entered.,scam
+Your insurance payout is approved. Pay a release fee using this payment link.,scam
+Your bank account will be locked in 15 minutes. Verify your details here immediately.,scam
+"To cancel the wrong transfer, install this app and give the agent remote access.",scam
+You are eligible for a free gift card. Pay ₹99 activation fee to claim it.,scam
+Your UPI refund is waiting. Approve the payment request to receive the funds.,scam
+Send the OTP from your phone so our bank officer can reverse the failed transaction.,scam
+"Your bank account was credited with ₹2,000. Available balance is shown in your banking app.",safe
+Your UPI payment of ₹450 to the merchant was successful.,safe
+Reminder: your electricity bill is due on 15 November. Pay using the official app.,safe
+"Your debit card ending 1234 was used for a purchase of ₹650. If this wasn't you, contact your bank using the number on your card.",safe
+"Never share your OTP, PIN or CVV with anyone, including people claiming to be bank staff.",safe
+Your monthly bank statement is ready in the official mobile banking app.,safe
+Your order has been shipped. Track it in the shopping app where you placed the order.,safe
+Your loan EMI is scheduled for 5 November. Check the details in your lender's official app.,safe
+Your UPI transaction was declined. No money has been deducted from your account.,safe
+Your salary has been credited. Please check your account balance through your bank's official app.,safe
+Your mobile recharge was successful. Thank you for using our service.,safe
+Your fixed deposit renewal is due next month. Visit your bank branch for details.,safe
+"Your bank will never ask you to share your password, OTP or UPI PIN.",safe
+"The payment of ₹1,250 to the utility provider is complete.",safe
+Your appointment is confirmed for 11 AM tomorrow.,safe
+Your parcel was delivered. Thank you for shopping with us.,safe
+Your monthly account summary is available. Open the official banking app to view it.,safe
+Your credit card bill is generated and is due on 20 November.,safe
+The refund has been credited to your original payment method.,safe
+Your insurance policy renewal reminder is due next week. Contact your insurer through its official website.,safe
+Your train ticket booking is confirmed. Keep your ticket available during travel.,safe
+Your water bill payment was successful. Receipt is available in the official portal.,safe
+Your bank branch will remain closed on the public holiday.,safe
+Your UPI PIN is confidential. Do not enter it to receive money.,safe
+Your order is out for delivery. The delivery partner may call to confirm your location.,safe
+Your mobile data pack expires tomorrow. Recharge through your operator's official app.,safe
+Your transaction alert settings were updated successfully.,safe
+Your pension contribution receipt is available in your account.,safe
+Your payment of ₹320 was received by the merchant.,safe
+"Your account password was changed successfully. If you did not make this change, contact your bank through its official app.",safe
+The bank's scheduled maintenance is planned for Sunday from 1 AM to 3 AM.,safe
+Your KYC document submission was received. Check its status in the official bank app.,safe
+Your refund request has been registered. You can track it in the merchant's official app.,safe
+Your card payment was successful at the store. Thank you.,safe
+Your broadband bill is ready. View it in your provider's official customer portal.,safe
+Your recurring deposit instalment was received successfully.,safe
+Your bank advises customers to use only its official website and mobile application.,safe
+Your ticket has been cancelled as requested. The refund will follow the stated policy.,safe
+Your account statement request has been completed.,safe
+Your UPI payment request was declined. You have not sent any money.,safe
+Your package is delayed. Check the delivery status using the link in your order history.,suspicious
+"A payment of ₹4,999 was attempted. Review your recent transactions in the official app.",suspicious
+Please update your profile details to avoid interruption of some services.,suspicious
+Your KYC details may need updating. Visit your bank branch or official website to confirm.,suspicious
+We could not verify your recent payment. Please check the transaction in your UPI app.,suspicious
+Your account needs attention. Contact customer support through the official website.,suspicious
+"A new device signed in to your account. If this was not you, secure your account using the official app.",suspicious
+Your refund is being processed. Check the status in the merchant app.,suspicious
+Your subscription payment could not be completed. Review your billing settings.,suspicious
+Your wallet balance needs verification. Please check the app for more information.,suspicious
+A parcel could not be delivered. Confirm your address in the retailer's official app.,suspicious
+Your bank profile is incomplete. Visit a branch if an update is required.,suspicious
+You may qualify for a cashback offer. Read the terms in the official app before proceeding.,suspicious
+Your card was temporarily declined. Contact the bank using the number printed on the card.,suspicious
+A new payee was added to your account. Review it in your banking app.,suspicious
+Your mobile number may need re-verification. Check with your operator's official support.,suspicious
+Your payment is pending. Do not pay again until you confirm the status in your UPI app.,suspicious
+We noticed an unsuccessful login. Review account security through the official website.,suspicious
+Your reward points are expiring soon. Check the rewards section of the official app.,suspicious
+Please confirm whether you requested a change to your registered email address.,suspicious
+Your order requires an address confirmation. Use the retailer's official app.,suspicious
+A service fee may apply to your account. Review the official fee schedule.,suspicious
+Your bank has a message for you. Sign in through the app you normally use to read it.,suspicious
+Your payment could not be matched to an order. Contact the merchant through its official help centre.,suspicious
+Your account access was limited after several failed attempts. Use the official recovery process.,suspicious
+A cashback amount is shown as pending. Check eligibility and terms before taking action.,suspicious
+Your digital wallet needs an app update. Use your phone's official app store.,suspicious
+Your recent transaction is under review. Check the status using your bank's official app.,suspicious
+Please verify the merchant name and amount before approving any UPI payment.,suspicious
+Your bank profile may be outdated. Confirm requirements through an official branch.,suspicious
+A payment request is waiting in your UPI app. Approve it only if you recognize the recipient and amount.,suspicious
+Your account notification preferences have changed. Review them in settings.,suspicious
+Your refund could take several business days. Check the merchant's published refund policy.,suspicious
+A support representative may contact you about your service request. Never share an OTP or PIN.,suspicious
+Your bill shows an outstanding amount. Verify it on the provider's official portal before paying.,suspicious
+Your card transaction is marked pending. Wait for the bank's final status before retrying.,suspicious
+Your account may be eligible for a limit increase. Review the offer in the official banking app.,suspicious
+A login attempt was blocked. Check your security notifications in the official app.,suspicious
+Your delivery address could not be confirmed. Check your order details in the retailer's app.,suspicious
+Your payment receipt is not yet available. Check again after the transaction status updates.,suspicious
+Your bank account will be blocked today. Share your OTP immediately.,scam
+Congratulations! You won a cash prize. Click this link to claim it.,scam
+Your KYC has expired. Send your PAN and bank details immediately.,scam
+Scan this QR code to receive your cashback.,scam
+Your UPI account is suspended. Install this APK to restore access.,scam
 "Your account has been debited. If this wasn't you, contact your bank using its official number.",safe
 "Never share your OTP, PIN or CVV with anyone.",safe
-"Your payment of Rs 500 was successful.",safe
-"Your electricity bill payment is due tomorrow.",safe
-"Your bank statement is now available.",safe
-"Your payment is pending. Please check your banking app.",suspicious
-"You have received a payment request on UPI. Review it before approving.",suspicious
-"Your KYC needs updating. Please verify through your bank's official app.",suspicious
-"An unusual login was detected. Check your account activity.",suspicious
-"Your parcel delivery is delayed. Check the tracking status.",suspicious
-=======
-"Your bank account is blocked. Share your OTP immediately.",scam
-"Congratulations! You won a cash prize. Click here to claim it.",scam
-"Scan this QR code to receive cashback.",scam
-"Your KYC has expired. Send your banking details immediately.",scam
-"Install this APK to receive your refund.",scam
-"Your UPI account will be suspended. Verify your PIN now.",scam
-"Pay a small fee to unlock your lottery prize.",scam
-"Call this number immediately to prevent account closure.",scam
-"Your electricity connection will be disconnected. Pay through this link.",scam
-"Send your card CVV to receive your reward.",scam
-"Never share your OTP, PIN or CVV with anyone.",safe
-"Your payment of Rs 500 was successful.",safe
-"Your bank statement is now available.",safe
-"Your electricity bill payment is due tomorrow.",safe
-"Your salary has been credited to your account.",safe
-"Your debit card transaction was successful.",safe
-"Your bank account balance has been updated.",safe
-"Thank you for using our banking service.",safe
-"Your monthly account statement is ready.",safe
-"Your scheduled payment has been completed.",safe
-"Your payment is pending. Check your banking app.",suspicious
-"An unusual login was detected. Check your account activity.",suspicious
-"Your KYC needs updating. Verify through your bank's official app.",suspicious
-"You have received a UPI payment request. Review it before approving.",suspicious
->>>>>>> e7e81f4 (test_scoring.py)
+Your payment of Rs 500 was successful.,safe
+Your electricity bill payment is due tomorrow.,safe
+Your bank statement is now available.,safe
+Your payment is pending. Please check your banking app.,suspicious
+You have received a payment request on UPI. Review it before approving.,suspicious
+Your KYC needs updating. Please verify through your bank's official app.,suspicious
+An unusual login was detected. Check your account activity.,suspicious
+Your parcel delivery is delayed. Check the tracking status.,suspicious
+Your bank account is blocked. Share your OTP immediately.,scam
+Congratulations! You won a cash prize. Click here to claim it.,scam
+Scan this QR code to receive cashback.,scam
+Your KYC has expired. Send your banking details immediately.,scam
+Install this APK to receive your refund.,scam
+Your UPI account will be suspended. Verify your PIN now.,scam
+Pay a small fee to unlock your lottery prize.,scam
+Call this number immediately to prevent account closure.,scam
+Your electricity connection will be disconnected. Pay through this link.,scam
+Send your card CVV to receive your reward.,scam
+Your salary has been credited to your account.,safe
+Your debit card transaction was successful.,safe
+Your bank account balance has been updated.,safe
+Thank you for using our banking service.,safe
+Your monthly account statement is ready.,safe
+Your scheduled payment has been completed.,safe
+Your payment is pending. Check your banking app.,suspicious
+Your KYC needs updating. Verify through your bank's official app.,suspicious
+You have received a UPI payment request. Review it before approving.,suspicious
