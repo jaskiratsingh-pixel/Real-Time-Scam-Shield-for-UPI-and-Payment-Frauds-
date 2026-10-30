@@ -1,54 +1,82 @@
 # Generated with Claude, reviewed and modified by the team
-"""Scoring: turns a 0-100 score into a verdict and applies override rules.
-Verdicts: 0-29 safe (green), 30-59 suspicious (amber), 60-100 scam (red)."""
+from checkers.ml import predict_scam_prob
 
 
-def verdict_from_score(score):
-    """Map a number to 'safe', 'suspicious' or 'scam'."""
-    if score >= 60:
-        return "scam"
-    if score >= 30:
+def _verdict(score):
+    if score < 30:
+        return "safe"
+    if score < 60:
         return "suspicious"
-    return "safe"
+    return "scam"
 
 
-def combine(message_result, url_results=None, ml_prob=None):
-    """Combine the message result with any URL results (and optional ML probability).
+def _clamp(score):
+    return max(0, min(100, int(round(score))))
 
-    Returns the shared contract plus a 'verdict' key:
-    {"score", "reasons", "details", "verdict"}
-    """
-    reasons = list(message_result.get("reasons", []))
-    score = message_result.get("score", 0)
 
-    # Add 60% of the worst URL score found in the message
-    if url_results:
-        worst = max(url_results, key=lambda r: r.get("score", 0))
-        score += 0.6 * worst.get("score", 0)
-        for code in worst.get("reasons", []):
-            if code not in reasons:
-                reasons.append(code)
+def ml_adjust(text, score):
+    """ML gives a small second opinion: +10 if very sure scam, -10 if very sure genuine."""
+    p = predict_scam_prob(text)
+    if p is None:
+        return score
+    if p >= 0.85:
+        score += 10
+    elif p <= 0.15:
+        score -= 10
+    return _clamp(score)
 
-    # Optional ML second opinion (a probability from 0 to 1)
-    if ml_prob is not None:
-        if ml_prob >= 0.85:
-            score += 15
-        elif ml_prob <= 0.15:
-            score -= 10
 
-    score = max(0, min(100, round(score)))
+def combine(msg, urls, text=None):
+    """msg = check_message result, urls = list of check_url results,
+    text = (masked) message text, optional, enables the ML nudge."""
+    urls = urls or []
+    score = msg.get("score", 0)
+    reasons = list(msg.get("reasons", []))
+    details = dict(msg.get("details") or {})
+    details.setdefault("links", [])
 
-        # Overrides: these are always Scam
-    asks_secret = "ASKS_SECRET" in reasons
-    has_link = "HAS_LINK" in reasons
-    prize_and_call = "PRIZE_BAIT" in reasons and "CALL_NUMBER" in reasons
-    if ((asks_secret and has_link) or "COLLECT_TRICK" in reasons
-            or "SCAN_TO_RECEIVE" in reasons or prize_and_call):
+    # 1. rules score + 0.6 x highest URL score
+    if urls:
+        top_url = max(u.get("score", 0) for u in urls)
+        score += 0.6 * top_url
+        for u in urls:
+            reasons += u.get("reasons", [])
+        details["url_details"] = [u.get("details", {}) for u in urls]
+    score = _clamp(score)
+
+    # 2. ML nudge (never crashes, skipped if model missing)
+    if text:
+        score = ml_adjust(text, score)
+
+    # 3. overrides come AFTER ML, so ML can never cancel them
+    if "COLLECT_TRICK" in reasons:
+        score = max(score, 60)
+    if "SCAN_TO_RECEIVE" in reasons:
+        score = max(score, 60)
+    if "ASKS_SECRET" in reasons and ("HAS_LINK" in reasons or urls):
         score = max(score, 60)
 
+    score = _clamp(score)
     return {
         "score": score,
-        "reasons": reasons,
-        "details": message_result.get("details", {}),
-        "verdict": verdict_from_score(score),
+        "reasons": list(dict.fromkeys(reasons)),
+        "details": details,
+        "verdict": _verdict(score),
+    }
+
+
+def combine_qr(qr):
+    """qr = result of analyse_qr(text, context)."""
+    score = qr.get("score", 0)
+    reasons = list(qr.get("reasons", []))
+    if "PAY_REQUEST" in reasons:
+        score = max(score, 30)   # a payment QR is never Safe
+    if "SCAN_TO_RECEIVE" in reasons:
+        score = max(score, 60)   # "receive" context = Scam
+    score = _clamp(score)
+    return {
+        "score": score,
+        "reasons": list(dict.fromkeys(reasons)),
+        "details": qr.get("details", {}),
+        "verdict": _verdict(score),
     }
