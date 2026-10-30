@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.metrics import (accuracy_score, confusion_matrix,
                              classification_report)
-from qr import decode_qr
+
 
 df = pd.read_csv("data/labelled_items.csv")
 df["decoded"] = df["image_file"].apply(lambda f: decode_qr(f"test_qr/{f}"))
@@ -32,7 +32,7 @@ print(confusion_matrix(df["label"], df["pred"], labels=labels))
 print("\n", classification_report(df["label"], df["pred"], labels=labels,
                                   zero_division=0))
 df.to_csv("data/results.csv", index=False)
-from qr import decode_qr
+from qr import decode_qrfrom checkers.qr import decode_qr
 got = df["image_file"].apply(lambda f: decode_qr(f"test_qr/{f}"))
 ok = (got == df["qr_text"])
 print(f"\nQR decode accuracy: {ok.mean():.3f} ({ok.sum()}/{len(df)})")
